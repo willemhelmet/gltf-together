@@ -3,19 +3,15 @@ import { Canvas } from "@react-three/fiber";
 import { useGLTF, Sky, Grid, OrbitControls } from "@react-three/drei";
 import { AxesHelper } from "./components/AxesHelper.tsx";
 import { useEffect } from "react";
+import { AutomergeUrl, useDocument } from "@automerge/react";
+import {MyFirstGLTF} from "./components/MyFirstGLTF.tsx"
 
-function App() {
-  const gltf = useGLTF("/box/Box.gltf");
-
-  useEffect(() => {
-    console.log(gltf);
-  }, [gltf]);
-
+function App({docUrl}) {
   return (
-    <>
+   <>
       <Canvas
         shadows
-        className="fixed top-0 left-0 outline-none z-0 w-screen h-screen"
+          className="fixed top-0 left-0 outline-none z-0 w-screen h-screen"
         camera={{ position: [5, 5, 5] }}
       >
         <Sky />
@@ -27,6 +23,7 @@ function App() {
           sectionColor={"#808080"}
         />
         <AxesHelper />
+        <MyFirstGLTF docUrl={docUrl}/>
       </Canvas>
     </>
   );
