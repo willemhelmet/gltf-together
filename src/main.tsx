@@ -33,7 +33,7 @@ const locationHash = document.location.hash.substring(1);
 if (isValidAutomergeUrl(locationHash)) {
   window.handle = await repo.find(locationHash);
 } else {
-  const response = await fetch("/box/Box.gltf");
+  const response = await fetch("/damaged-helmet/DamagedHelmet.gltf");
   const gltf = await response.json();
   window.handle = repo.create<GlTF>(gltf);
   // Set the location hash to the new document we just made

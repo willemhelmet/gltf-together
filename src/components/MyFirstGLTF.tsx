@@ -1,22 +1,33 @@
-import {useEffect} from "react";
-import {Box, Gltf} from "@react-three/drei";
-import {AutomergeUrl, useDocument} from "@automerge/react";
+import {useEffect, useState} from "react";
+import {useDocument} from "@automerge/react";
 import {GlTF} from "../glTF.d.ts"
 import {GLTFLoader} from "three-stdlib";
 
 export function MyFirstGLTF({docUrl}) {
-  const [doc, changeDoc] = useDocument<GlTF>(docUrl, {
+  const [doc] = useDocument<GlTF>(docUrl, {
     suspense: true,
   })
+  const [gltf, setGltf] = useState(null);
+
   useEffect(() => {
+    if (!doc) return;
+
     const loader = new GLTFLoader();
-    loader.parse(doc);
+    loader.parse(
+      doc,
+      '/damaged-helmet/',
+      (loadedGltf) => {
+        setGltf(loadedGltf);
+      },
+      (error) => {
+        console.error('An error happened during GLTF parsing:', error);
+      }
+    );
   }, [doc])
+
   return (
     <>
-      <Box>
-        <meshBasicMaterial color="royalblue"/>
-      </Box>
+      {gltf && <primitive object={gltf.scene}/>}
     </>
   )
 }
