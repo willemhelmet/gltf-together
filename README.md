@@ -1,4 +1,4 @@
-# glTF Automerge
+# glTF Together
 
 This project is a web-based 3D graphics application that demonstrates real-time collaboration on glTF models using Automerge. It uses React, Three.js, and `@automerge/react` to load and display a 3D model, and allows for real-time updates to the model data.
 
