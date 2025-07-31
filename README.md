@@ -1,69 +1,40 @@
-# React + TypeScript + Vite
+# glTF Automerge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a web-based 3D graphics application that demonstrates real-time collaboration on glTF models using Automerge. It uses React, Three.js, and `@automerge/react` to load and display a 3D model, and allows for real-time updates to the model data.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*   **Real-time collaboration:** Multiple users can view and interact with the same 3D model in real-time.
+*   **glTF loading:** The application loads and renders glTF models.
+*   **3D scene:** The model is displayed in a 3D scene with basic lighting and controls.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+*   **React:** A JavaScript library for building user interfaces.
+*   **Three.js:** A 3D graphics library for creating and displaying 3D content in a web browser.
+*   **@react-three/fiber:** A React renderer for Three.js.
+*   **@react-three/drei:** A collection of useful helpers and abstractions for `react-three-fiber`.
+*   **@automerge/react:** A library for building real-time collaborative applications with Automerge and React.
+*   **Vite:** A build tool that provides a fast development experience for web projects.
+*   **TypeScript:** A typed superset of JavaScript that compiles to plain JavaScript.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Setup
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/gltf-automerge.git
+    ```
+2.  Install the dependencies:
+    ```bash
+    cd gltf-automerge
+    npm install
+    ```
+3.  Run the development server:
+    ```bash
+    npm run dev
+    ```
+4.  Open your browser and navigate to `http://localhost:5173`.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Usage
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+The application will load a default glTF model. To collaborate with others, share the URL of the application with them. Any changes made to the model will be reflected in real-time for all connected users.
